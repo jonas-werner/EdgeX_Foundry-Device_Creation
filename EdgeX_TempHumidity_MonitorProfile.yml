@@ -1,0 +1,48 @@
+# Copyright 2017 Dell Inc. All rights reserved.
+name: "Temp and Humidity sensor cluster monitor profile - 01"
+manufacturer: "Dell EMC"
+model: "Dell_EMC sensor cluster model ABC12345"
+labels:
+    - "sensorcluster"
+description: "Temp and Humidity sensor cluster monitor profile - 01"
+commands:
+  -
+    name: Humidity
+    get:
+        path: "/api/v1/devices/{deviceId}/temperature"
+        responses:
+          -
+            code: "200"
+            description: "Humidity near sensorcluster"
+            expectedValues: ["humidity"]
+          -
+            code: "503"
+            description: "service unavailable"
+            expectedValues: ["sensorclustererror"]
+  -
+    name: Temperature
+    get:
+        path: "/api/v1/devices/{deviceId}/humidity"
+        responses:
+          -
+            code: "200"
+            description: "Temperature near sensorcluster"
+            expectedValues: ["temperature"]
+          -
+            code: "503"
+            description: "service unavailable"
+            expectedValues: ["sensorclustererror"]
+  -
+  -
+    name: hum_temp_values
+    get:
+        path: "/api/v1/devices/{deviceId}/values"
+        responses:
+          -
+            code: "200"
+            description: "Get the humidity and temperature values"
+            expectedValues: ["value","value"]
+          -
+            code: "503"
+            description: "service unavailable"
+            expectedValues: []
