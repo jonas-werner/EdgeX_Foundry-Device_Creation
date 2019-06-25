@@ -14,8 +14,6 @@ args=vars(parser.parse_args())
 
 edgex_ip=args["ip"]
 
-response = requests.get('https://%s/redfish/v1/Systems/System.Embedded.1/Bios' % edgex_ip,verify=False,auth=(idrac_username, idrac_password))
-
 # Make two calls to Core Metadata, to create the Addressable for the Device Service:
 def createAddressables():
     # Create the addressable for the Device Service:
