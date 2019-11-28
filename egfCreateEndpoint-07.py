@@ -122,7 +122,7 @@ def createDeviceService():
                     "adminState":       "unlocked",
                     "operatingState":   "enabled",
                     "addressable":  {
-                        "name": "sensor cluster control"
+                        "name": "humidity and temp address 1"
                     }
                 }
     headers = {'content-type': 'application/json'}
